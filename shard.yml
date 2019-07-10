@@ -1,0 +1,28 @@
+name: crafana
+version: 0.1.0
+
+authors:
+  - Holden Omans <holden.omans@gmail.com>
+
+targets:
+  crafana:
+    main: src/bin/crafana.cr
+
+crystal: 0.29.0
+
+license: MIT
+
+dependencies:
+  spoved:
+    github: spoved/spoved.cr
+    branch: master
+  clim:
+    github: at-grandpa/clim
+  colors:
+    github: dscottboggs/colors-and-gradients
+
+development_dependencies:
+  vcr:
+    github: spoved/vcr.cr
+  dotenv:
+    github: gdotdesign/cr-dotenv

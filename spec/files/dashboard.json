@@ -1,0 +1,4764 @@
+{
+  "annotations": {
+    "list": [{
+      "builtIn": 1,
+      "datasource": "-- Grafana --",
+      "enable": true,
+      "hide": true,
+      "iconColor": "rgba(0, 211, 255, 1)",
+      "name": "Annotations & Alerts",
+      "type": "dashboard"
+    }]
+  },
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "id": 382,
+  "iteration": 1559796014846,
+  "links": [],
+  "panels": [{
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 107,
+      "panels": [],
+      "repeat": null,
+      "title": "Production EU",
+      "type": "row"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": true,
+      "colorValue": false,
+      "colors": [
+        "#73BF69",
+        "#FADE2A",
+        "#F2495C"
+      ],
+      "datasource": "Prometheus GCP Production EU",
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 1
+      },
+      "id": 154,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [{
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "options": {},
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [{
+        "from": "null",
+        "text": "N/A",
+        "to": "null"
+      }],
+      "repeat": null,
+      "repeatDirection": "h",
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false
+      },
+      "tableColumn": "",
+      "targets": [{
+        "expr": "max(max(elasticsearch_cluster_health_status{color=\"green\"} or up * 0)  by (cluster) + max(elasticsearch_cluster_health_status{color=\"yellow\"} * 2 or up * 0) by (cluster) +  max(elasticsearch_cluster_health_status{color=\"red\"} * 3 or up * 0) by (cluster))",
+        "format": "time_series",
+        "hide": false,
+        "instant": true,
+        "intervalFactor": 1,
+        "refId": "A",
+        "target": ""
+      }],
+      "thresholds": "2,2.9",
+      "title": "",
+      "type": "singlestat",
+      "valueFontSize": "50%",
+      "valueMaps": [{
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        },
+        {
+          "op": "=",
+          "text": "GREEN",
+          "value": "1"
+        },
+        {
+          "op": "=",
+          "text": "YELLOW",
+          "value": "2"
+        },
+        {
+          "op": "=",
+          "text": "RED",
+          "value": "3"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "aliasColors": {
+        "green": "green",
+        "red": "red",
+        "yellow": "yellow"
+      },
+      "bars": true,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus GCP Production EU",
+      "fill": 0,
+      "gridPos": {
+        "h": 3,
+        "w": 4,
+        "x": 0,
+        "y": 2
+      },
+      "id": 118,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": false,
+      "linewidth": 1,
+      "links": [],
+      "maxPerRow": 6,
+      "nullPointMode": "null as zero",
+      "options": {},
+      "paceLength": 10,
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "repeat": "production_eu_cluster",
+      "repeatDirection": "h",
+      "scopedVars": {
+        "production_eu_cluster": {
+          "selected": false,
+          "text": "ctp-test-es-cluster-es-experimental",
+          "value": "ctp-test-es-cluster-es-experimental"
+        }
+      },
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [{
+          "expr": "max(elasticsearch_cluster_health_status{cluster=\"$production_eu_cluster\",color=\"green\"} == 1)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "green",
+          "refId": "A",
+          "target": ""
+        },
+        {
+          "expr": "max(elasticsearch_cluster_health_status{cluster=\"$production_eu_cluster\", color=\"yellow\"} == 1)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "yellow",
+          "refId": "B",
+          "target": ""
+        },
+        {
+          "expr": "max(elasticsearch_cluster_health_status{cluster=\"$production_eu_cluster\", color=\"red\"} == 1)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "red",
+          "refId": "C",
+          "target": ""
+        }
+      ],
+      "thresholds": [{
+        "colorMode": "critical",
+        "fill": true,
+        "line": true,
+        "op": "gt",
+        "yaxis": "left"
+      }],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "$production_eu_cluster",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [{
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": "1",
+          "min": "0",
+          "show": false
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {
+        "green": "green",
+        "red": "red",
+        "yellow": "yellow"
+      },
+      "bars": true,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus GCP Production EU",
+      "fill": 0,
+      "gridPos": {
+        "h": 3,
+        "w": 4,
+        "x": 4,
+        "y": 2
+      },
+      "id": 475,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": false,
+      "linewidth": 1,
+      "links": [],
+      "maxPerRow": 6,
+      "nullPointMode": "null as zero",
+      "options": {},
+      "paceLength": 10,
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "repeat": null,
+      "repeatDirection": "h",
+      "repeatIteration": 1559796014846,
+      "repeatPanelId": 118,
+      "scopedVars": {
+        "production_eu_cluster": {
+          "selected": false,
+          "text": "elasticsearch",
+          "value": "elasticsearch"
+        }
+      },
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [{
+          "expr": "max(elasticsearch_cluster_health_status{cluster=\"$production_eu_cluster\",color=\"green\"} == 1)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "green",
+          "refId": "A",
+          "target": ""
+        },
+        {
+          "expr": "max(elasticsearch_cluster_health_status{cluster=\"$production_eu_cluster\", color=\"yellow\"} == 1)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "yellow",
+          "refId": "B",
+          "target": ""
+        },
+        {
+          "expr": "max(elasticsearch_cluster_health_status{cluster=\"$production_eu_cluster\", color=\"red\"} == 1)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "red",
+          "refId": "C",
+          "target": ""
+        }
+      ],
+      "thresholds": [{
+        "colorMode": "critical",
+        "fill": true,
+        "line": true,
+        "op": "gt",
+        "yaxis": "left"
+      }],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "$production_eu_cluster",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [{
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": "1",
+          "min": "0",
+          "show": false
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {
+        "green": "green",
+        "red": "red",
+        "yellow": "yellow"
+      },
+      "bars": true,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus GCP Production EU",
+      "fill": 0,
+      "gridPos": {
+        "h": 3,
+        "w": 4,
+        "x": 8,
+        "y": 2
+      },
+      "id": 476,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": false,
+      "linewidth": 1,
+      "links": [],
+      "maxPerRow": 6,
+      "nullPointMode": "null as zero",
+      "options": {},
+      "paceLength": 10,
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "repeat": null,
+      "repeatDirection": "h",
+      "repeatIteration": 1559796014846,
+      "repeatPanelId": 118,
+      "scopedVars": {
+        "production_eu_cluster": {
+          "selected": false,
+          "text": "es1",
+          "value": "es1"
+        }
+      },
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [{
+          "expr": "max(elasticsearch_cluster_health_status{cluster=\"$production_eu_cluster\",color=\"green\"} == 1)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "green",
+          "refId": "A",
+          "target": ""
+        },
+        {
+          "expr": "max(elasticsearch_cluster_health_status{cluster=\"$production_eu_cluster\", color=\"yellow\"} == 1)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "yellow",
+          "refId": "B",
+          "target": ""
+        },
+        {
+          "expr": "max(elasticsearch_cluster_health_status{cluster=\"$production_eu_cluster\", color=\"red\"} == 1)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "red",
+          "refId": "C",
+          "target": ""
+        }
+      ],
+      "thresholds": [{
+        "colorMode": "critical",
+        "fill": true,
+        "line": true,
+        "op": "gt",
+        "yaxis": "left"
+      }],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "$production_eu_cluster",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [{
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": "1",
+          "min": "0",
+          "show": false
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {
+        "green": "green",
+        "red": "red",
+        "yellow": "yellow"
+      },
+      "bars": true,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus GCP Production EU",
+      "fill": 0,
+      "gridPos": {
+        "h": 3,
+        "w": 4,
+        "x": 12,
+        "y": 2
+      },
+      "id": 477,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": false,
+      "linewidth": 1,
+      "links": [],
+      "maxPerRow": 6,
+      "nullPointMode": "null as zero",
+      "options": {},
+      "paceLength": 10,
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "repeat": null,
+      "repeatDirection": "h",
+      "repeatIteration": 1559796014846,
+      "repeatPanelId": 118,
+      "scopedVars": {
+        "production_eu_cluster": {
+          "selected": false,
+          "text": "es2",
+          "value": "es2"
+        }
+      },
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [{
+          "expr": "max(elasticsearch_cluster_health_status{cluster=\"$production_eu_cluster\",color=\"green\"} == 1)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "green",
+          "refId": "A",
+          "target": ""
+        },
+        {
+          "expr": "max(elasticsearch_cluster_health_status{cluster=\"$production_eu_cluster\", color=\"yellow\"} == 1)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "yellow",
+          "refId": "B",
+          "target": ""
+        },
+        {
+          "expr": "max(elasticsearch_cluster_health_status{cluster=\"$production_eu_cluster\", color=\"red\"} == 1)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "red",
+          "refId": "C",
+          "target": ""
+        }
+      ],
+      "thresholds": [{
+        "colorMode": "critical",
+        "fill": true,
+        "line": true,
+        "op": "gt",
+        "yaxis": "left"
+      }],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "$production_eu_cluster",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [{
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": "1",
+          "min": "0",
+          "show": false
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {
+        "green": "green",
+        "red": "red",
+        "yellow": "yellow"
+      },
+      "bars": true,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus GCP Production EU",
+      "fill": 0,
+      "gridPos": {
+        "h": 3,
+        "w": 4,
+        "x": 16,
+        "y": 2
+      },
+      "id": 478,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": false,
+      "linewidth": 1,
+      "links": [],
+      "maxPerRow": 6,
+      "nullPointMode": "null as zero",
+      "options": {},
+      "paceLength": 10,
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "repeat": null,
+      "repeatDirection": "h",
+      "repeatIteration": 1559796014846,
+      "repeatPanelId": 118,
+      "scopedVars": {
+        "production_eu_cluster": {
+          "selected": false,
+          "text": "es3",
+          "value": "es3"
+        }
+      },
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [{
+          "expr": "max(elasticsearch_cluster_health_status{cluster=\"$production_eu_cluster\",color=\"green\"} == 1)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "green",
+          "refId": "A",
+          "target": ""
+        },
+        {
+          "expr": "max(elasticsearch_cluster_health_status{cluster=\"$production_eu_cluster\", color=\"yellow\"} == 1)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "yellow",
+          "refId": "B",
+          "target": ""
+        },
+        {
+          "expr": "max(elasticsearch_cluster_health_status{cluster=\"$production_eu_cluster\", color=\"red\"} == 1)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "red",
+          "refId": "C",
+          "target": ""
+        }
+      ],
+      "thresholds": [{
+        "colorMode": "critical",
+        "fill": true,
+        "line": true,
+        "op": "gt",
+        "yaxis": "left"
+      }],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "$production_eu_cluster",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [{
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": "1",
+          "min": "0",
+          "show": false
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {
+        "green": "green",
+        "red": "red",
+        "yellow": "yellow"
+      },
+      "bars": true,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus GCP Production EU",
+      "fill": 0,
+      "gridPos": {
+        "h": 3,
+        "w": 4,
+        "x": 20,
+        "y": 2
+      },
+      "id": 479,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": false,
+      "linewidth": 1,
+      "links": [],
+      "maxPerRow": 6,
+      "nullPointMode": "null as zero",
+      "options": {},
+      "paceLength": 10,
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "repeat": null,
+      "repeatDirection": "h",
+      "repeatIteration": 1559796014846,
+      "repeatPanelId": 118,
+      "scopedVars": {
+        "production_eu_cluster": {
+          "selected": false,
+          "text": "es4",
+          "value": "es4"
+        }
+      },
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [{
+          "expr": "max(elasticsearch_cluster_health_status{cluster=\"$production_eu_cluster\",color=\"green\"} == 1)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "green",
+          "refId": "A",
+          "target": ""
+        },
+        {
+          "expr": "max(elasticsearch_cluster_health_status{cluster=\"$production_eu_cluster\", color=\"yellow\"} == 1)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "yellow",
+          "refId": "B",
+          "target": ""
+        },
+        {
+          "expr": "max(elasticsearch_cluster_health_status{cluster=\"$production_eu_cluster\", color=\"red\"} == 1)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "red",
+          "refId": "C",
+          "target": ""
+        }
+      ],
+      "thresholds": [{
+        "colorMode": "critical",
+        "fill": true,
+        "line": true,
+        "op": "gt",
+        "yaxis": "left"
+      }],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "$production_eu_cluster",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [{
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": "1",
+          "min": "0",
+          "show": false
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {
+        "green": "green",
+        "red": "red",
+        "yellow": "yellow"
+      },
+      "bars": true,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus GCP Production EU",
+      "fill": 0,
+      "gridPos": {
+        "h": 3,
+        "w": 4,
+        "x": 0,
+        "y": 5
+      },
+      "id": 480,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": false,
+      "linewidth": 1,
+      "links": [],
+      "maxPerRow": 6,
+      "nullPointMode": "null as zero",
+      "options": {},
+      "paceLength": 10,
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "repeat": null,
+      "repeatDirection": "h",
+      "repeatIteration": 1559796014846,
+      "repeatPanelId": 118,
+      "scopedVars": {
+        "production_eu_cluster": {
+          "selected": false,
+          "text": "es5",
+          "value": "es5"
+        }
+      },
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [{
+          "expr": "max(elasticsearch_cluster_health_status{cluster=\"$production_eu_cluster\",color=\"green\"} == 1)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "green",
+          "refId": "A",
+          "target": ""
+        },
+        {
+          "expr": "max(elasticsearch_cluster_health_status{cluster=\"$production_eu_cluster\", color=\"yellow\"} == 1)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "yellow",
+          "refId": "B",
+          "target": ""
+        },
+        {
+          "expr": "max(elasticsearch_cluster_health_status{cluster=\"$production_eu_cluster\", color=\"red\"} == 1)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "red",
+          "refId": "C",
+          "target": ""
+        }
+      ],
+      "thresholds": [{
+        "colorMode": "critical",
+        "fill": true,
+        "line": true,
+        "op": "gt",
+        "yaxis": "left"
+      }],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "$production_eu_cluster",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [{
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": "1",
+          "min": "0",
+          "show": false
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {
+        "green": "green",
+        "red": "red",
+        "yellow": "yellow"
+      },
+      "bars": true,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus GCP Production EU",
+      "fill": 0,
+      "gridPos": {
+        "h": 3,
+        "w": 4,
+        "x": 4,
+        "y": 5
+      },
+      "id": 481,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": false,
+      "linewidth": 1,
+      "links": [],
+      "maxPerRow": 6,
+      "nullPointMode": "null as zero",
+      "options": {},
+      "paceLength": 10,
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "repeat": null,
+      "repeatDirection": "h",
+      "repeatIteration": 1559796014846,
+      "repeatPanelId": 118,
+      "scopedVars": {
+        "production_eu_cluster": {
+          "selected": false,
+          "text": "es6",
+          "value": "es6"
+        }
+      },
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [{
+          "expr": "max(elasticsearch_cluster_health_status{cluster=\"$production_eu_cluster\",color=\"green\"} == 1)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "green",
+          "refId": "A",
+          "target": ""
+        },
+        {
+          "expr": "max(elasticsearch_cluster_health_status{cluster=\"$production_eu_cluster\", color=\"yellow\"} == 1)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "yellow",
+          "refId": "B",
+          "target": ""
+        },
+        {
+          "expr": "max(elasticsearch_cluster_health_status{cluster=\"$production_eu_cluster\", color=\"red\"} == 1)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "red",
+          "refId": "C",
+          "target": ""
+        }
+      ],
+      "thresholds": [{
+        "colorMode": "critical",
+        "fill": true,
+        "line": true,
+        "op": "gt",
+        "yaxis": "left"
+      }],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "$production_eu_cluster",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [{
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": "1",
+          "min": "0",
+          "show": false
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {
+        "green": "green",
+        "red": "red",
+        "yellow": "yellow"
+      },
+      "bars": true,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus GCP Production EU",
+      "fill": 0,
+      "gridPos": {
+        "h": 3,
+        "w": 4,
+        "x": 8,
+        "y": 5
+      },
+      "id": 482,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": false,
+      "linewidth": 1,
+      "links": [],
+      "maxPerRow": 6,
+      "nullPointMode": "null as zero",
+      "options": {},
+      "paceLength": 10,
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "repeat": null,
+      "repeatDirection": "h",
+      "repeatIteration": 1559796014846,
+      "repeatPanelId": 118,
+      "scopedVars": {
+        "production_eu_cluster": {
+          "selected": false,
+          "text": "es7",
+          "value": "es7"
+        }
+      },
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [{
+          "expr": "max(elasticsearch_cluster_health_status{cluster=\"$production_eu_cluster\",color=\"green\"} == 1)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "green",
+          "refId": "A",
+          "target": ""
+        },
+        {
+          "expr": "max(elasticsearch_cluster_health_status{cluster=\"$production_eu_cluster\", color=\"yellow\"} == 1)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "yellow",
+          "refId": "B",
+          "target": ""
+        },
+        {
+          "expr": "max(elasticsearch_cluster_health_status{cluster=\"$production_eu_cluster\", color=\"red\"} == 1)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "red",
+          "refId": "C",
+          "target": ""
+        }
+      ],
+      "thresholds": [{
+        "colorMode": "critical",
+        "fill": true,
+        "line": true,
+        "op": "gt",
+        "yaxis": "left"
+      }],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "$production_eu_cluster",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [{
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": "1",
+          "min": "0",
+          "show": false
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {
+        "green": "green",
+        "red": "red",
+        "yellow": "yellow"
+      },
+      "bars": true,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus GCP Production EU",
+      "fill": 0,
+      "gridPos": {
+        "h": 3,
+        "w": 4,
+        "x": 12,
+        "y": 5
+      },
+      "id": 483,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": false,
+      "linewidth": 1,
+      "links": [],
+      "maxPerRow": 6,
+      "nullPointMode": "null as zero",
+      "options": {},
+      "paceLength": 10,
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "repeat": null,
+      "repeatDirection": "h",
+      "repeatIteration": 1559796014846,
+      "repeatPanelId": 118,
+      "scopedVars": {
+        "production_eu_cluster": {
+          "selected": false,
+          "text": "es8",
+          "value": "es8"
+        }
+      },
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [{
+          "expr": "max(elasticsearch_cluster_health_status{cluster=\"$production_eu_cluster\",color=\"green\"} == 1)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "green",
+          "refId": "A",
+          "target": ""
+        },
+        {
+          "expr": "max(elasticsearch_cluster_health_status{cluster=\"$production_eu_cluster\", color=\"yellow\"} == 1)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "yellow",
+          "refId": "B",
+          "target": ""
+        },
+        {
+          "expr": "max(elasticsearch_cluster_health_status{cluster=\"$production_eu_cluster\", color=\"red\"} == 1)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "red",
+          "refId": "C",
+          "target": ""
+        }
+      ],
+      "thresholds": [{
+        "colorMode": "critical",
+        "fill": true,
+        "line": true,
+        "op": "gt",
+        "yaxis": "left"
+      }],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "$production_eu_cluster",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [{
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": "1",
+          "min": "0",
+          "show": false
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {
+        "green": "green",
+        "red": "red",
+        "yellow": "yellow"
+      },
+      "bars": true,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus GCP Production EU",
+      "fill": 0,
+      "gridPos": {
+        "h": 3,
+        "w": 4,
+        "x": 16,
+        "y": 5
+      },
+      "id": 484,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": false,
+      "linewidth": 1,
+      "links": [],
+      "maxPerRow": 6,
+      "nullPointMode": "null as zero",
+      "options": {},
+      "paceLength": 10,
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "repeat": null,
+      "repeatDirection": "h",
+      "repeatIteration": 1559796014846,
+      "repeatPanelId": 118,
+      "scopedVars": {
+        "production_eu_cluster": {
+          "selected": false,
+          "text": "pim-search",
+          "value": "pim-search"
+        }
+      },
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [{
+          "expr": "max(elasticsearch_cluster_health_status{cluster=\"$production_eu_cluster\",color=\"green\"} == 1)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "green",
+          "refId": "A",
+          "target": ""
+        },
+        {
+          "expr": "max(elasticsearch_cluster_health_status{cluster=\"$production_eu_cluster\", color=\"yellow\"} == 1)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "yellow",
+          "refId": "B",
+          "target": ""
+        },
+        {
+          "expr": "max(elasticsearch_cluster_health_status{cluster=\"$production_eu_cluster\", color=\"red\"} == 1)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "red",
+          "refId": "C",
+          "target": ""
+        }
+      ],
+      "thresholds": [{
+        "colorMode": "critical",
+        "fill": true,
+        "line": true,
+        "op": "gt",
+        "yaxis": "left"
+      }],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "$production_eu_cluster",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [{
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": "1",
+          "min": "0",
+          "show": false
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {
+        "green": "green",
+        "red": "red",
+        "yellow": "yellow"
+      },
+      "bars": true,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus GCP Production EU",
+      "fill": 0,
+      "gridPos": {
+        "h": 3,
+        "w": 4,
+        "x": 20,
+        "y": 5
+      },
+      "id": 485,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": false,
+      "linewidth": 1,
+      "links": [],
+      "maxPerRow": 6,
+      "nullPointMode": "null as zero",
+      "options": {},
+      "paceLength": 10,
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "repeat": null,
+      "repeatDirection": "h",
+      "repeatIteration": 1559796014846,
+      "repeatPanelId": 118,
+      "scopedVars": {
+        "production_eu_cluster": {
+          "selected": false,
+          "text": "search01",
+          "value": "search01"
+        }
+      },
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [{
+          "expr": "max(elasticsearch_cluster_health_status{cluster=\"$production_eu_cluster\",color=\"green\"} == 1)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "green",
+          "refId": "A",
+          "target": ""
+        },
+        {
+          "expr": "max(elasticsearch_cluster_health_status{cluster=\"$production_eu_cluster\", color=\"yellow\"} == 1)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "yellow",
+          "refId": "B",
+          "target": ""
+        },
+        {
+          "expr": "max(elasticsearch_cluster_health_status{cluster=\"$production_eu_cluster\", color=\"red\"} == 1)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "red",
+          "refId": "C",
+          "target": ""
+        }
+      ],
+      "thresholds": [{
+        "colorMode": "critical",
+        "fill": true,
+        "line": true,
+        "op": "gt",
+        "yaxis": "left"
+      }],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "$production_eu_cluster",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [{
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": "1",
+          "min": "0",
+          "show": false
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 8
+      },
+      "id": 124,
+      "panels": [],
+      "title": "Production US",
+      "type": "row"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": true,
+      "colorValue": false,
+      "colors": [
+        "#73BF69",
+        "#FADE2A",
+        "#F2495C"
+      ],
+      "datasource": "Prometheus GCP Production US",
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 9
+      },
+      "id": 164,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [{
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "options": {},
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [{
+        "from": "null",
+        "text": "N/A",
+        "to": "null"
+      }],
+      "repeatDirection": "h",
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false
+      },
+      "tableColumn": "",
+      "targets": [{
+        "expr": "max(max(elasticsearch_cluster_health_status{color=\"green\"} or up * 0)  by (cluster) + max(elasticsearch_cluster_health_status{color=\"yellow\"} * 2 or up * 0) by (cluster) +  max(elasticsearch_cluster_health_status{color=\"red\"} * 3 or up * 0) by (cluster))",
+        "format": "time_series",
+        "instant": true,
+        "intervalFactor": 1,
+        "refId": "B"
+      }],
+      "thresholds": "2,2.9",
+      "title": "",
+      "type": "singlestat",
+      "valueFontSize": "50%",
+      "valueMaps": [{
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        },
+        {
+          "op": "=",
+          "text": "GREEN",
+          "value": "1"
+        },
+        {
+          "op": "=",
+          "text": "YELLOW",
+          "value": "2"
+        },
+        {
+          "op": "=",
+          "text": "RED",
+          "value": "3"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "aliasColors": {
+        "green": "green",
+        "red": "#bf1b00",
+        "yellow": "#eab839"
+      },
+      "bars": true,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus GCP Production US",
+      "fill": 0,
+      "gridPos": {
+        "h": 3,
+        "w": 8,
+        "x": 0,
+        "y": 10
+      },
+      "id": 132,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": false,
+      "linewidth": 1,
+      "links": [],
+      "maxPerRow": 4,
+      "nullPointMode": "null as zero",
+      "options": {},
+      "paceLength": 10,
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "repeat": "production_us_cluster",
+      "repeatDirection": "h",
+      "scopedVars": {
+        "production_us_cluster": {
+          "selected": false,
+          "text": "ctp-gce",
+          "value": "ctp-gce"
+        }
+      },
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [{
+          "expr": "max(elasticsearch_cluster_health_status{cluster=\"$production_us_cluster\",color=\"green\"} == 1)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "green",
+          "refId": "A",
+          "target": ""
+        },
+        {
+          "expr": "max(elasticsearch_cluster_health_status{cluster=\"$production_us_cluster\", color=\"yellow\"} == 1)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "yellow",
+          "refId": "B",
+          "target": ""
+        },
+        {
+          "expr": "max(elasticsearch_cluster_health_status{cluster=\"$production_us_cluster\", color=\"red\"} == 1)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "red",
+          "refId": "C",
+          "target": ""
+        }
+      ],
+      "thresholds": [{
+        "colorMode": "critical",
+        "fill": true,
+        "line": true,
+        "op": "gt",
+        "yaxis": "left"
+      }],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "$production_us_cluster",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [{
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": "1",
+          "min": "0",
+          "show": false
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {
+        "green": "green",
+        "red": "#bf1b00",
+        "yellow": "#eab839"
+      },
+      "bars": true,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus GCP Production US",
+      "fill": 0,
+      "gridPos": {
+        "h": 3,
+        "w": 8,
+        "x": 8,
+        "y": 10
+      },
+      "id": 486,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": false,
+      "linewidth": 1,
+      "links": [],
+      "maxPerRow": 4,
+      "nullPointMode": "null as zero",
+      "options": {},
+      "paceLength": 10,
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "repeat": null,
+      "repeatDirection": "h",
+      "repeatIteration": 1559796014846,
+      "repeatPanelId": 132,
+      "scopedVars": {
+        "production_us_cluster": {
+          "selected": false,
+          "text": "elasticsearch",
+          "value": "elasticsearch"
+        }
+      },
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [{
+          "expr": "max(elasticsearch_cluster_health_status{cluster=\"$production_us_cluster\",color=\"green\"} == 1)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "green",
+          "refId": "A",
+          "target": ""
+        },
+        {
+          "expr": "max(elasticsearch_cluster_health_status{cluster=\"$production_us_cluster\", color=\"yellow\"} == 1)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "yellow",
+          "refId": "B",
+          "target": ""
+        },
+        {
+          "expr": "max(elasticsearch_cluster_health_status{cluster=\"$production_us_cluster\", color=\"red\"} == 1)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "red",
+          "refId": "C",
+          "target": ""
+        }
+      ],
+      "thresholds": [{
+        "colorMode": "critical",
+        "fill": true,
+        "line": true,
+        "op": "gt",
+        "yaxis": "left"
+      }],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "$production_us_cluster",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [{
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": "1",
+          "min": "0",
+          "show": false
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {
+        "green": "green",
+        "red": "#bf1b00",
+        "yellow": "#eab839"
+      },
+      "bars": true,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus GCP Production US",
+      "fill": 0,
+      "gridPos": {
+        "h": 3,
+        "w": 8,
+        "x": 16,
+        "y": 10
+      },
+      "id": 487,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": false,
+      "linewidth": 1,
+      "links": [],
+      "maxPerRow": 4,
+      "nullPointMode": "null as zero",
+      "options": {},
+      "paceLength": 10,
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "repeat": null,
+      "repeatDirection": "h",
+      "repeatIteration": 1559796014846,
+      "repeatPanelId": 132,
+      "scopedVars": {
+        "production_us_cluster": {
+          "selected": false,
+          "text": "pim-search",
+          "value": "pim-search"
+        }
+      },
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [{
+          "expr": "max(elasticsearch_cluster_health_status{cluster=\"$production_us_cluster\",color=\"green\"} == 1)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "green",
+          "refId": "A",
+          "target": ""
+        },
+        {
+          "expr": "max(elasticsearch_cluster_health_status{cluster=\"$production_us_cluster\", color=\"yellow\"} == 1)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "yellow",
+          "refId": "B",
+          "target": ""
+        },
+        {
+          "expr": "max(elasticsearch_cluster_health_status{cluster=\"$production_us_cluster\", color=\"red\"} == 1)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "red",
+          "refId": "C",
+          "target": ""
+        }
+      ],
+      "thresholds": [{
+        "colorMode": "critical",
+        "fill": true,
+        "line": true,
+        "op": "gt",
+        "yaxis": "left"
+      }],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "$production_us_cluster",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [{
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": "1",
+          "min": "0",
+          "show": false
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 13
+      },
+      "id": 312,
+      "panels": [],
+      "title": "VW Production",
+      "type": "row"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": true,
+      "colorValue": false,
+      "colors": [
+        "#73BF69",
+        "#FADE2A",
+        "#F2495C"
+      ],
+      "datasource": "Prometheus AWS Production VW",
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 14
+      },
+      "id": 344,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [{
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "options": {},
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [{
+        "from": "null",
+        "text": "N/A",
+        "to": "null"
+      }],
+      "repeatDirection": "h",
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false
+      },
+      "tableColumn": "",
+      "targets": [{
+        "expr": "max(max(elasticsearch_cluster_health_status{color=\"green\"} or up * 0)  by (cluster) + max(elasticsearch_cluster_health_status{color=\"yellow\"} * 2 or up * 0) by (cluster) +  max(elasticsearch_cluster_health_status{color=\"red\"} * 3 or up * 0) by (cluster))",
+        "format": "time_series",
+        "instant": true,
+        "intervalFactor": 1,
+        "refId": "B"
+      }],
+      "thresholds": "2,2.9",
+      "title": "",
+      "type": "singlestat",
+      "valueFontSize": "50%",
+      "valueMaps": [{
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        },
+        {
+          "op": "=",
+          "text": "GREEN",
+          "value": "1"
+        },
+        {
+          "op": "=",
+          "text": "YELLOW",
+          "value": "2"
+        },
+        {
+          "op": "=",
+          "text": "RED",
+          "value": "3"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "aliasColors": {
+        "green": "green",
+        "red": "#bf1b00",
+        "yellow": "#eab839"
+      },
+      "bars": true,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus AWS Production VW",
+      "fill": 0,
+      "gridPos": {
+        "h": 3,
+        "w": 12,
+        "x": 0,
+        "y": 15
+      },
+      "id": 322,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": false,
+      "linewidth": 1,
+      "links": [],
+      "maxPerRow": 6,
+      "nullPointMode": "null as zero",
+      "options": {},
+      "paceLength": 10,
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "repeat": "vw_production",
+      "repeatDirection": "h",
+      "scopedVars": {
+        "vw_production": {
+          "selected": false,
+          "text": "es1",
+          "value": "es1"
+        }
+      },
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [{
+          "expr": "max(elasticsearch_cluster_health_status{cluster=\"$vw_production\",color=\"green\"} == 1)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "green",
+          "refId": "A",
+          "target": ""
+        },
+        {
+          "expr": "max(elasticsearch_cluster_health_status{cluster=\"$vw_production\", color=\"yellow\"} == 1)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "yellow",
+          "refId": "B",
+          "target": ""
+        },
+        {
+          "expr": "max(elasticsearch_cluster_health_status{cluster=\"$vw_production\", color=\"red\"} == 1)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "red",
+          "refId": "C",
+          "target": ""
+        }
+      ],
+      "thresholds": [{
+        "colorMode": "critical",
+        "fill": true,
+        "line": true,
+        "op": "gt",
+        "yaxis": "left"
+      }],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "$vw_production",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [{
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": "1",
+          "min": "0",
+          "show": false
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {
+        "green": "green",
+        "red": "#bf1b00",
+        "yellow": "#eab839"
+      },
+      "bars": true,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus AWS Production VW",
+      "fill": 0,
+      "gridPos": {
+        "h": 3,
+        "w": 12,
+        "x": 12,
+        "y": 15
+      },
+      "id": 488,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": false,
+      "linewidth": 1,
+      "links": [],
+      "maxPerRow": 6,
+      "nullPointMode": "null as zero",
+      "options": {},
+      "paceLength": 10,
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "repeat": null,
+      "repeatDirection": "h",
+      "repeatIteration": 1559796014846,
+      "repeatPanelId": 322,
+      "scopedVars": {
+        "vw_production": {
+          "selected": false,
+          "text": "elasticsearch",
+          "value": "elasticsearch"
+        }
+      },
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [{
+          "expr": "max(elasticsearch_cluster_health_status{cluster=\"$vw_production\",color=\"green\"} == 1)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "green",
+          "refId": "A",
+          "target": ""
+        },
+        {
+          "expr": "max(elasticsearch_cluster_health_status{cluster=\"$vw_production\", color=\"yellow\"} == 1)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "yellow",
+          "refId": "B",
+          "target": ""
+        },
+        {
+          "expr": "max(elasticsearch_cluster_health_status{cluster=\"$vw_production\", color=\"red\"} == 1)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "red",
+          "refId": "C",
+          "target": ""
+        }
+      ],
+      "thresholds": [{
+        "colorMode": "critical",
+        "fill": true,
+        "line": true,
+        "op": "gt",
+        "yaxis": "left"
+      }],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "$vw_production",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [{
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": "1",
+          "min": "0",
+          "show": false
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 18
+      },
+      "id": 394,
+      "panels": [],
+      "title": "AWS Production FRA",
+      "type": "row"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": true,
+      "colorValue": false,
+      "colors": [
+        "#73BF69",
+        "#FADE2A",
+        "#F2495C"
+      ],
+      "datasource": "Prometheus AWS Production EU",
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 19
+      },
+      "id": 396,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [{
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "options": {},
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [{
+        "from": "null",
+        "text": "N/A",
+        "to": "null"
+      }],
+      "repeatDirection": "h",
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false
+      },
+      "tableColumn": "",
+      "targets": [{
+        "expr": "max(max(elasticsearch_cluster_health_status{color=\"green\"} or up * 0)  by (cluster) + max(elasticsearch_cluster_health_status{color=\"yellow\"} * 2 or up * 0) by (cluster) +  max(elasticsearch_cluster_health_status{color=\"red\"} * 3 or up * 0) by (cluster))",
+        "format": "time_series",
+        "instant": true,
+        "intervalFactor": 1,
+        "refId": "B"
+      }],
+      "thresholds": "2,2.9",
+      "title": "",
+      "type": "singlestat",
+      "valueFontSize": "50%",
+      "valueMaps": [{
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        },
+        {
+          "op": "=",
+          "text": "GREEN",
+          "value": "1"
+        },
+        {
+          "op": "=",
+          "text": "YELLOW",
+          "value": "2"
+        },
+        {
+          "op": "=",
+          "text": "RED",
+          "value": "3"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "aliasColors": {
+        "green": "green",
+        "red": "#bf1b00",
+        "yellow": "#eab839"
+      },
+      "bars": true,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus AWS Production EU",
+      "fill": 0,
+      "gridPos": {
+        "h": 3,
+        "w": 8,
+        "x": 0,
+        "y": 20
+      },
+      "id": 397,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": false,
+      "linewidth": 1,
+      "links": [],
+      "maxPerRow": 6,
+      "nullPointMode": "null as zero",
+      "options": {},
+      "paceLength": 10,
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "repeat": "ctp_aws_production_fra",
+      "repeatDirection": "h",
+      "scopedVars": {
+        "ctp_aws_production_fra": {
+          "selected": false,
+          "text": "pim-search",
+          "value": "pim-search"
+        }
+      },
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [{
+          "expr": "max(elasticsearch_cluster_health_status{cluster=\"$ctp_aws_production_fra\",color=\"green\"} == 1)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "green",
+          "refId": "A",
+          "target": ""
+        },
+        {
+          "expr": "max(elasticsearch_cluster_health_status{cluster=\"$ctp_aws_production_fra\", color=\"yellow\"} == 1)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "yellow",
+          "refId": "B",
+          "target": ""
+        },
+        {
+          "expr": "max(elasticsearch_cluster_health_status{cluster=\"$ctp_aws_production_fra\", color=\"red\"} == 1)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "red",
+          "refId": "C",
+          "target": ""
+        }
+      ],
+      "thresholds": [{
+        "colorMode": "critical",
+        "fill": true,
+        "line": true,
+        "op": "gt",
+        "yaxis": "left"
+      }],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "$ctp_aws_production_fra",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [{
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": "1",
+          "min": "0",
+          "show": false
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {
+        "green": "green",
+        "red": "#bf1b00",
+        "yellow": "#eab839"
+      },
+      "bars": true,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus AWS Production EU",
+      "fill": 0,
+      "gridPos": {
+        "h": 3,
+        "w": 8,
+        "x": 8,
+        "y": 20
+      },
+      "id": 489,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": false,
+      "linewidth": 1,
+      "links": [],
+      "maxPerRow": 6,
+      "nullPointMode": "null as zero",
+      "options": {},
+      "paceLength": 10,
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "repeat": null,
+      "repeatDirection": "h",
+      "repeatIteration": 1559796014846,
+      "repeatPanelId": 397,
+      "scopedVars": {
+        "ctp_aws_production_fra": {
+          "selected": false,
+          "text": "es1",
+          "value": "es1"
+        }
+      },
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [{
+          "expr": "max(elasticsearch_cluster_health_status{cluster=\"$ctp_aws_production_fra\",color=\"green\"} == 1)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "green",
+          "refId": "A",
+          "target": ""
+        },
+        {
+          "expr": "max(elasticsearch_cluster_health_status{cluster=\"$ctp_aws_production_fra\", color=\"yellow\"} == 1)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "yellow",
+          "refId": "B",
+          "target": ""
+        },
+        {
+          "expr": "max(elasticsearch_cluster_health_status{cluster=\"$ctp_aws_production_fra\", color=\"red\"} == 1)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "red",
+          "refId": "C",
+          "target": ""
+        }
+      ],
+      "thresholds": [{
+        "colorMode": "critical",
+        "fill": true,
+        "line": true,
+        "op": "gt",
+        "yaxis": "left"
+      }],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "$ctp_aws_production_fra",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [{
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": "1",
+          "min": "0",
+          "show": false
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {
+        "green": "green",
+        "red": "#bf1b00",
+        "yellow": "#eab839"
+      },
+      "bars": true,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus AWS Production EU",
+      "fill": 0,
+      "gridPos": {
+        "h": 3,
+        "w": 8,
+        "x": 16,
+        "y": 20
+      },
+      "id": 490,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": false,
+      "linewidth": 1,
+      "links": [],
+      "maxPerRow": 6,
+      "nullPointMode": "null as zero",
+      "options": {},
+      "paceLength": 10,
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "repeat": null,
+      "repeatDirection": "h",
+      "repeatIteration": 1559796014846,
+      "repeatPanelId": 397,
+      "scopedVars": {
+        "ctp_aws_production_fra": {
+          "selected": false,
+          "text": "elasticsearch",
+          "value": "elasticsearch"
+        }
+      },
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [{
+          "expr": "max(elasticsearch_cluster_health_status{cluster=\"$ctp_aws_production_fra\",color=\"green\"} == 1)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "green",
+          "refId": "A",
+          "target": ""
+        },
+        {
+          "expr": "max(elasticsearch_cluster_health_status{cluster=\"$ctp_aws_production_fra\", color=\"yellow\"} == 1)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "yellow",
+          "refId": "B",
+          "target": ""
+        },
+        {
+          "expr": "max(elasticsearch_cluster_health_status{cluster=\"$ctp_aws_production_fra\", color=\"red\"} == 1)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "red",
+          "refId": "C",
+          "target": ""
+        }
+      ],
+      "thresholds": [{
+        "colorMode": "critical",
+        "fill": true,
+        "line": true,
+        "op": "gt",
+        "yaxis": "left"
+      }],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "$ctp_aws_production_fra",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [{
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": "1",
+          "min": "0",
+          "show": false
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 23
+      },
+      "id": 459,
+      "panels": [],
+      "title": "AWS Production ATT",
+      "type": "row"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": true,
+      "colorValue": false,
+      "colors": [
+        "#73BF69",
+        "#FADE2A",
+        "#F2495C"
+      ],
+      "datasource": "Prometheus AWS Production ATT",
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 24
+      },
+      "id": 474,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [{
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "options": {},
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [{
+        "from": "null",
+        "text": "N/A",
+        "to": "null"
+      }],
+      "repeatDirection": "h",
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false
+      },
+      "tableColumn": "",
+      "targets": [{
+        "expr": "max(max(elasticsearch_cluster_health_status{color=\"green\"} or up * 0)  by (cluster) + max(elasticsearch_cluster_health_status{color=\"yellow\"} * 2 or up * 0) by (cluster) +  max(elasticsearch_cluster_health_status{color=\"red\"} * 3 or up * 0) by (cluster))",
+        "format": "time_series",
+        "hide": false,
+        "instant": true,
+        "intervalFactor": 1,
+        "refId": "A",
+        "target": ""
+      }],
+      "thresholds": "2,2.9",
+      "title": "",
+      "type": "singlestat",
+      "valueFontSize": "50%",
+      "valueMaps": [{
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        },
+        {
+          "op": "=",
+          "text": "GREEN",
+          "value": "1"
+        },
+        {
+          "op": "=",
+          "text": "YELLOW",
+          "value": "2"
+        },
+        {
+          "op": "=",
+          "text": "RED",
+          "value": "3"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "aliasColors": {
+        "green": "green",
+        "red": "red",
+        "yellow": "yellow"
+      },
+      "bars": true,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus AWS Production ATT",
+      "fill": 0,
+      "gridPos": {
+        "h": 3,
+        "w": 12,
+        "x": 0,
+        "y": 25
+      },
+      "id": 473,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": false,
+      "linewidth": 1,
+      "links": [],
+      "maxPerRow": 6,
+      "nullPointMode": "null as zero",
+      "options": {},
+      "paceLength": 10,
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "repeat": "att_production_va",
+      "repeatDirection": "h",
+      "scopedVars": {
+        "att_production_va": {
+          "selected": false,
+          "text": "es1",
+          "value": "es1"
+        }
+      },
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [{
+          "expr": "max(elasticsearch_cluster_health_status{cluster=\"$att_production_va\",color=\"green\"} == 1)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "green",
+          "refId": "A",
+          "target": ""
+        },
+        {
+          "expr": "max(elasticsearch_cluster_health_status{cluster=\"$att_production_va\", color=\"yellow\"} == 1)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "yellow",
+          "refId": "B",
+          "target": ""
+        },
+        {
+          "expr": "max(elasticsearch_cluster_health_status{cluster=\"$att_production_va\", color=\"red\"} == 1)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "red",
+          "refId": "C",
+          "target": ""
+        }
+      ],
+      "thresholds": [{
+        "colorMode": "critical",
+        "fill": true,
+        "line": true,
+        "op": "gt",
+        "yaxis": "left"
+      }],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "$att_production_va",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [{
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": "1",
+          "min": "0",
+          "show": false
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {
+        "green": "green",
+        "red": "red",
+        "yellow": "yellow"
+      },
+      "bars": true,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus AWS Production ATT",
+      "fill": 0,
+      "gridPos": {
+        "h": 3,
+        "w": 12,
+        "x": 12,
+        "y": 25
+      },
+      "id": 491,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": false,
+      "linewidth": 1,
+      "links": [],
+      "maxPerRow": 6,
+      "nullPointMode": "null as zero",
+      "options": {},
+      "paceLength": 10,
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "repeat": null,
+      "repeatDirection": "h",
+      "repeatIteration": 1559796014846,
+      "repeatPanelId": 473,
+      "scopedVars": {
+        "att_production_va": {
+          "selected": false,
+          "text": "elasticsearch",
+          "value": "elasticsearch"
+        }
+      },
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [{
+          "expr": "max(elasticsearch_cluster_health_status{cluster=\"$att_production_va\",color=\"green\"} == 1)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "green",
+          "refId": "A",
+          "target": ""
+        },
+        {
+          "expr": "max(elasticsearch_cluster_health_status{cluster=\"$att_production_va\", color=\"yellow\"} == 1)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "yellow",
+          "refId": "B",
+          "target": ""
+        },
+        {
+          "expr": "max(elasticsearch_cluster_health_status{cluster=\"$att_production_va\", color=\"red\"} == 1)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "red",
+          "refId": "C",
+          "target": ""
+        }
+      ],
+      "thresholds": [{
+        "colorMode": "critical",
+        "fill": true,
+        "line": true,
+        "op": "gt",
+        "yaxis": "left"
+      }],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "$att_production_va",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [{
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": "1",
+          "min": "0",
+          "show": false
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "collapsed": true,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 28
+      },
+      "id": 140,
+      "panels": [{
+          "cacheTimeout": null,
+          "colorBackground": true,
+          "colorValue": false,
+          "colors": [
+            "#73BF69",
+            "#FADE2A",
+            "#F2495C"
+          ],
+          "datasource": "Prometheus GCP Staging EU",
+          "format": "none",
+          "gauge": {
+            "maxValue": 100,
+            "minValue": 0,
+            "show": false,
+            "thresholdLabels": false,
+            "thresholdMarkers": true
+          },
+          "gridPos": {
+            "h": 1,
+            "w": 24,
+            "x": 0,
+            "y": 29
+          },
+          "id": 174,
+          "interval": null,
+          "links": [],
+          "mappingType": 1,
+          "mappingTypes": [{
+              "name": "value to text",
+              "value": 1
+            },
+            {
+              "name": "range to text",
+              "value": 2
+            }
+          ],
+          "maxDataPoints": 100,
+          "nullPointMode": "connected",
+          "nullText": null,
+          "options": {},
+          "postfix": "",
+          "postfixFontSize": "50%",
+          "prefix": "",
+          "prefixFontSize": "50%",
+          "rangeMaps": [{
+            "from": "null",
+            "text": "N/A",
+            "to": "null"
+          }],
+          "repeatDirection": "h",
+          "sparkline": {
+            "fillColor": "rgba(31, 118, 189, 0.18)",
+            "full": false,
+            "lineColor": "rgb(31, 120, 193)",
+            "show": false
+          },
+          "tableColumn": "",
+          "targets": [{
+            "expr": "max(max(elasticsearch_cluster_health_status{color=\"green\"} or up * 0)  by (cluster) + max(elasticsearch_cluster_health_status{color=\"yellow\"} * 2 or up * 0) by (cluster) +  max(elasticsearch_cluster_health_status{color=\"red\"} * 3 or up * 0) by (cluster))",
+            "format": "time_series",
+            "instant": true,
+            "intervalFactor": 1,
+            "refId": "B"
+          }],
+          "thresholds": "2,2.9",
+          "title": "",
+          "type": "singlestat",
+          "valueFontSize": "50%",
+          "valueMaps": [{
+              "op": "=",
+              "text": "N/A",
+              "value": "null"
+            },
+            {
+              "op": "=",
+              "text": "GREEN",
+              "value": "1"
+            },
+            {
+              "op": "=",
+              "text": "YELLOW",
+              "value": "2"
+            },
+            {
+              "op": "=",
+              "text": "RED",
+              "value": "3"
+            }
+          ],
+          "valueName": "current"
+        },
+        {
+          "aliasColors": {
+            "green": "green",
+            "red": "#bf1b00",
+            "yellow": "#eab839"
+          },
+          "bars": true,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "Prometheus GCP Staging EU",
+          "fill": 0,
+          "gridPos": {
+            "h": 3,
+            "w": 6,
+            "x": 0,
+            "y": 30
+          },
+          "id": 143,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": false,
+            "total": false,
+            "values": false
+          },
+          "lines": false,
+          "linewidth": 1,
+          "links": [],
+          "maxPerRow": 4,
+          "nullPointMode": "null as zero",
+          "options": {},
+          "paceLength": 10,
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "repeat": "staging_cluster",
+          "repeatDirection": "h",
+          "scopedVars": {
+            "staging_cluster": {
+              "selected": false,
+              "text": "ctp-gce",
+              "value": "ctp-gce"
+            }
+          },
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [{
+              "expr": "max(elasticsearch_cluster_health_status{cluster=\"$staging_cluster\",color=\"green\"} == 1)",
+              "format": "time_series",
+              "hide": false,
+              "interval": "",
+              "intervalFactor": 1,
+              "legendFormat": "green",
+              "refId": "A",
+              "target": ""
+            },
+            {
+              "expr": "max(elasticsearch_cluster_health_status{cluster=\"$staging_cluster\", color=\"yellow\"} == 1)",
+              "format": "time_series",
+              "hide": false,
+              "interval": "",
+              "intervalFactor": 1,
+              "legendFormat": "yellow",
+              "refId": "B",
+              "target": ""
+            },
+            {
+              "expr": "max(elasticsearch_cluster_health_status{cluster=\"$staging_cluster\", color=\"red\"} == 1)",
+              "format": "time_series",
+              "hide": false,
+              "interval": "",
+              "intervalFactor": 1,
+              "legendFormat": "red",
+              "refId": "C",
+              "target": ""
+            }
+          ],
+          "thresholds": [{
+            "colorMode": "critical",
+            "fill": true,
+            "line": true,
+            "op": "gt",
+            "yaxis": "left"
+          }],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "$staging_cluster",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [{
+              "format": "none",
+              "label": null,
+              "logBase": 1,
+              "max": "1",
+              "min": "0",
+              "show": false
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": false
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {
+            "green": "green",
+            "red": "#bf1b00",
+            "yellow": "#eab839"
+          },
+          "bars": true,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "Prometheus GCP Staging EU",
+          "fill": 0,
+          "gridPos": {
+            "h": 3,
+            "w": 6,
+            "x": 6,
+            "y": 30
+          },
+          "id": 492,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": false,
+            "total": false,
+            "values": false
+          },
+          "lines": false,
+          "linewidth": 1,
+          "links": [],
+          "maxPerRow": 4,
+          "nullPointMode": "null as zero",
+          "options": {},
+          "paceLength": 10,
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "repeat": null,
+          "repeatDirection": "h",
+          "repeatIteration": 1559796014846,
+          "repeatPanelId": 143,
+          "scopedVars": {
+            "staging_cluster": {
+              "selected": false,
+              "text": "elasticsearch",
+              "value": "elasticsearch"
+            }
+          },
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [{
+              "expr": "max(elasticsearch_cluster_health_status{cluster=\"$staging_cluster\",color=\"green\"} == 1)",
+              "format": "time_series",
+              "hide": false,
+              "interval": "",
+              "intervalFactor": 1,
+              "legendFormat": "green",
+              "refId": "A",
+              "target": ""
+            },
+            {
+              "expr": "max(elasticsearch_cluster_health_status{cluster=\"$staging_cluster\", color=\"yellow\"} == 1)",
+              "format": "time_series",
+              "hide": false,
+              "interval": "",
+              "intervalFactor": 1,
+              "legendFormat": "yellow",
+              "refId": "B",
+              "target": ""
+            },
+            {
+              "expr": "max(elasticsearch_cluster_health_status{cluster=\"$staging_cluster\", color=\"red\"} == 1)",
+              "format": "time_series",
+              "hide": false,
+              "interval": "",
+              "intervalFactor": 1,
+              "legendFormat": "red",
+              "refId": "C",
+              "target": ""
+            }
+          ],
+          "thresholds": [{
+            "colorMode": "critical",
+            "fill": true,
+            "line": true,
+            "op": "gt",
+            "yaxis": "left"
+          }],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "$staging_cluster",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [{
+              "format": "none",
+              "label": null,
+              "logBase": 1,
+              "max": "1",
+              "min": "0",
+              "show": false
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": false
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {
+            "green": "green",
+            "red": "#bf1b00",
+            "yellow": "#eab839"
+          },
+          "bars": true,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "Prometheus GCP Staging EU",
+          "fill": 0,
+          "gridPos": {
+            "h": 3,
+            "w": 6,
+            "x": 12,
+            "y": 30
+          },
+          "id": 493,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": false,
+            "total": false,
+            "values": false
+          },
+          "lines": false,
+          "linewidth": 1,
+          "links": [],
+          "maxPerRow": 4,
+          "nullPointMode": "null as zero",
+          "options": {},
+          "paceLength": 10,
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "repeat": null,
+          "repeatDirection": "h",
+          "repeatIteration": 1559796014846,
+          "repeatPanelId": 143,
+          "scopedVars": {
+            "staging_cluster": {
+              "selected": false,
+              "text": "es1",
+              "value": "es1"
+            }
+          },
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [{
+              "expr": "max(elasticsearch_cluster_health_status{cluster=\"$staging_cluster\",color=\"green\"} == 1)",
+              "format": "time_series",
+              "hide": false,
+              "interval": "",
+              "intervalFactor": 1,
+              "legendFormat": "green",
+              "refId": "A",
+              "target": ""
+            },
+            {
+              "expr": "max(elasticsearch_cluster_health_status{cluster=\"$staging_cluster\", color=\"yellow\"} == 1)",
+              "format": "time_series",
+              "hide": false,
+              "interval": "",
+              "intervalFactor": 1,
+              "legendFormat": "yellow",
+              "refId": "B",
+              "target": ""
+            },
+            {
+              "expr": "max(elasticsearch_cluster_health_status{cluster=\"$staging_cluster\", color=\"red\"} == 1)",
+              "format": "time_series",
+              "hide": false,
+              "interval": "",
+              "intervalFactor": 1,
+              "legendFormat": "red",
+              "refId": "C",
+              "target": ""
+            }
+          ],
+          "thresholds": [{
+            "colorMode": "critical",
+            "fill": true,
+            "line": true,
+            "op": "gt",
+            "yaxis": "left"
+          }],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "$staging_cluster",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [{
+              "format": "none",
+              "label": null,
+              "logBase": 1,
+              "max": "1",
+              "min": "0",
+              "show": false
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": false
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {
+            "green": "green",
+            "red": "#bf1b00",
+            "yellow": "#eab839"
+          },
+          "bars": true,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "Prometheus GCP Staging EU",
+          "fill": 0,
+          "gridPos": {
+            "h": 3,
+            "w": 6,
+            "x": 18,
+            "y": 30
+          },
+          "id": 494,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": false,
+            "total": false,
+            "values": false
+          },
+          "lines": false,
+          "linewidth": 1,
+          "links": [],
+          "maxPerRow": 4,
+          "nullPointMode": "null as zero",
+          "options": {},
+          "paceLength": 10,
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "repeat": null,
+          "repeatDirection": "h",
+          "repeatIteration": 1559796014846,
+          "repeatPanelId": 143,
+          "scopedVars": {
+            "staging_cluster": {
+              "selected": false,
+              "text": "pim-search",
+              "value": "pim-search"
+            }
+          },
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [{
+              "expr": "max(elasticsearch_cluster_health_status{cluster=\"$staging_cluster\",color=\"green\"} == 1)",
+              "format": "time_series",
+              "hide": false,
+              "interval": "",
+              "intervalFactor": 1,
+              "legendFormat": "green",
+              "refId": "A",
+              "target": ""
+            },
+            {
+              "expr": "max(elasticsearch_cluster_health_status{cluster=\"$staging_cluster\", color=\"yellow\"} == 1)",
+              "format": "time_series",
+              "hide": false,
+              "interval": "",
+              "intervalFactor": 1,
+              "legendFormat": "yellow",
+              "refId": "B",
+              "target": ""
+            },
+            {
+              "expr": "max(elasticsearch_cluster_health_status{cluster=\"$staging_cluster\", color=\"red\"} == 1)",
+              "format": "time_series",
+              "hide": false,
+              "interval": "",
+              "intervalFactor": 1,
+              "legendFormat": "red",
+              "refId": "C",
+              "target": ""
+            }
+          ],
+          "thresholds": [{
+            "colorMode": "critical",
+            "fill": true,
+            "line": true,
+            "op": "gt",
+            "yaxis": "left"
+          }],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "$staging_cluster",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [{
+              "format": "none",
+              "label": null,
+              "logBase": 1,
+              "max": "1",
+              "min": "0",
+              "show": false
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": false
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {
+            "green": "green",
+            "red": "#bf1b00",
+            "yellow": "#eab839"
+          },
+          "bars": true,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "Prometheus GCP Staging EU",
+          "fill": 0,
+          "gridPos": {
+            "h": 3,
+            "w": 6,
+            "x": 0,
+            "y": 33
+          },
+          "id": 495,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": false,
+            "total": false,
+            "values": false
+          },
+          "lines": false,
+          "linewidth": 1,
+          "links": [],
+          "maxPerRow": 4,
+          "nullPointMode": "null as zero",
+          "options": {},
+          "paceLength": 10,
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "repeat": null,
+          "repeatDirection": "h",
+          "repeatIteration": 1559796014846,
+          "repeatPanelId": 143,
+          "scopedVars": {
+            "staging_cluster": {
+              "selected": false,
+              "text": "search01",
+              "value": "search01"
+            }
+          },
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [{
+              "expr": "max(elasticsearch_cluster_health_status{cluster=\"$staging_cluster\",color=\"green\"} == 1)",
+              "format": "time_series",
+              "hide": false,
+              "interval": "",
+              "intervalFactor": 1,
+              "legendFormat": "green",
+              "refId": "A",
+              "target": ""
+            },
+            {
+              "expr": "max(elasticsearch_cluster_health_status{cluster=\"$staging_cluster\", color=\"yellow\"} == 1)",
+              "format": "time_series",
+              "hide": false,
+              "interval": "",
+              "intervalFactor": 1,
+              "legendFormat": "yellow",
+              "refId": "B",
+              "target": ""
+            },
+            {
+              "expr": "max(elasticsearch_cluster_health_status{cluster=\"$staging_cluster\", color=\"red\"} == 1)",
+              "format": "time_series",
+              "hide": false,
+              "interval": "",
+              "intervalFactor": 1,
+              "legendFormat": "red",
+              "refId": "C",
+              "target": ""
+            }
+          ],
+          "thresholds": [{
+            "colorMode": "critical",
+            "fill": true,
+            "line": true,
+            "op": "gt",
+            "yaxis": "left"
+          }],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "$staging_cluster",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [{
+              "format": "none",
+              "label": null,
+              "logBase": 1,
+              "max": "1",
+              "min": "0",
+              "show": false
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": false
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        }
+      ],
+      "title": "Staging",
+      "type": "row"
+    },
+    {
+      "collapsed": true,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 29
+      },
+      "id": 337,
+      "panels": [{
+          "cacheTimeout": null,
+          "colorBackground": true,
+          "colorValue": false,
+          "colors": [
+            "#73BF69",
+            "#FADE2A",
+            "#F2495C"
+          ],
+          "datasource": "Prometheus AWS Staging VW",
+          "format": "none",
+          "gauge": {
+            "maxValue": 100,
+            "minValue": 0,
+            "show": false,
+            "thresholdLabels": false,
+            "thresholdMarkers": true
+          },
+          "gridPos": {
+            "h": 1,
+            "w": 24,
+            "x": 0,
+            "y": 30
+          },
+          "id": 349,
+          "interval": null,
+          "links": [],
+          "mappingType": 1,
+          "mappingTypes": [{
+              "name": "value to text",
+              "value": 1
+            },
+            {
+              "name": "range to text",
+              "value": 2
+            }
+          ],
+          "maxDataPoints": 100,
+          "nullPointMode": "connected",
+          "nullText": null,
+          "options": {},
+          "postfix": "",
+          "postfixFontSize": "50%",
+          "prefix": "",
+          "prefixFontSize": "50%",
+          "rangeMaps": [{
+            "from": "null",
+            "text": "N/A",
+            "to": "null"
+          }],
+          "repeatDirection": "h",
+          "sparkline": {
+            "fillColor": "rgba(31, 118, 189, 0.18)",
+            "full": false,
+            "lineColor": "rgb(31, 120, 193)",
+            "show": false
+          },
+          "tableColumn": "",
+          "targets": [{
+            "expr": "max(max(elasticsearch_cluster_health_status{color=\"green\"} or up * 0)  by (cluster) + max(elasticsearch_cluster_health_status{color=\"yellow\"} * 2 or up * 0) by (cluster) +  max(elasticsearch_cluster_health_status{color=\"red\"} * 3 or up * 0) by (cluster))",
+            "format": "time_series",
+            "instant": true,
+            "intervalFactor": 1,
+            "refId": "B"
+          }],
+          "thresholds": "2,2.9",
+          "title": "",
+          "type": "singlestat",
+          "valueFontSize": "50%",
+          "valueMaps": [{
+              "op": "=",
+              "text": "N/A",
+              "value": "null"
+            },
+            {
+              "op": "=",
+              "text": "GREEN",
+              "value": "1"
+            },
+            {
+              "op": "=",
+              "text": "YELLOW",
+              "value": "2"
+            },
+            {
+              "op": "=",
+              "text": "RED",
+              "value": "3"
+            }
+          ],
+          "valueName": "current"
+        },
+        {
+          "aliasColors": {
+            "green": "green",
+            "red": "#bf1b00",
+            "yellow": "#eab839"
+          },
+          "bars": true,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "Prometheus AWS Staging VW",
+          "fill": 0,
+          "gridPos": {
+            "h": 3,
+            "w": 12,
+            "x": 0,
+            "y": 31
+          },
+          "id": 350,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": false,
+            "total": false,
+            "values": false
+          },
+          "lines": false,
+          "linewidth": 1,
+          "links": [],
+          "maxPerRow": 4,
+          "nullPointMode": "null as zero",
+          "options": {},
+          "paceLength": 10,
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "repeat": "vw_staging",
+          "repeatDirection": "h",
+          "scopedVars": {
+            "vw_staging": {
+              "selected": false,
+              "text": "es1",
+              "value": "es1"
+            }
+          },
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [{
+              "expr": "max(elasticsearch_cluster_health_status{cluster=\"$vw_staging\",color=\"green\"} == 1)",
+              "format": "time_series",
+              "hide": false,
+              "interval": "",
+              "intervalFactor": 1,
+              "legendFormat": "green",
+              "refId": "A",
+              "target": ""
+            },
+            {
+              "expr": "max(elasticsearch_cluster_health_status{cluster=\"$vw_staging\", color=\"yellow\"} == 1)",
+              "format": "time_series",
+              "hide": false,
+              "interval": "",
+              "intervalFactor": 1,
+              "legendFormat": "yellow",
+              "refId": "B",
+              "target": ""
+            },
+            {
+              "expr": "max(elasticsearch_cluster_health_status{cluster=\"$vw_staging\", color=\"red\"} == 1)",
+              "format": "time_series",
+              "hide": false,
+              "interval": "",
+              "intervalFactor": 1,
+              "legendFormat": "red",
+              "refId": "C",
+              "target": ""
+            }
+          ],
+          "thresholds": [{
+            "colorMode": "critical",
+            "fill": true,
+            "line": true,
+            "op": "gt",
+            "yaxis": "left"
+          }],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "$vw_staging",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [{
+              "format": "none",
+              "label": null,
+              "logBase": 1,
+              "max": "1",
+              "min": "0",
+              "show": false
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": false
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {
+            "green": "green",
+            "red": "#bf1b00",
+            "yellow": "#eab839"
+          },
+          "bars": true,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "Prometheus AWS Staging VW",
+          "fill": 0,
+          "gridPos": {
+            "h": 3,
+            "w": 12,
+            "x": 12,
+            "y": 31
+          },
+          "id": 496,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": false,
+            "total": false,
+            "values": false
+          },
+          "lines": false,
+          "linewidth": 1,
+          "links": [],
+          "maxPerRow": 4,
+          "nullPointMode": "null as zero",
+          "options": {},
+          "paceLength": 10,
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "repeat": null,
+          "repeatDirection": "h",
+          "repeatIteration": 1559796014846,
+          "repeatPanelId": 350,
+          "scopedVars": {
+            "vw_staging": {
+              "selected": false,
+              "text": "elasticsearch",
+              "value": "elasticsearch"
+            }
+          },
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [{
+              "expr": "max(elasticsearch_cluster_health_status{cluster=\"$vw_staging\",color=\"green\"} == 1)",
+              "format": "time_series",
+              "hide": false,
+              "interval": "",
+              "intervalFactor": 1,
+              "legendFormat": "green",
+              "refId": "A",
+              "target": ""
+            },
+            {
+              "expr": "max(elasticsearch_cluster_health_status{cluster=\"$vw_staging\", color=\"yellow\"} == 1)",
+              "format": "time_series",
+              "hide": false,
+              "interval": "",
+              "intervalFactor": 1,
+              "legendFormat": "yellow",
+              "refId": "B",
+              "target": ""
+            },
+            {
+              "expr": "max(elasticsearch_cluster_health_status{cluster=\"$vw_staging\", color=\"red\"} == 1)",
+              "format": "time_series",
+              "hide": false,
+              "interval": "",
+              "intervalFactor": 1,
+              "legendFormat": "red",
+              "refId": "C",
+              "target": ""
+            }
+          ],
+          "thresholds": [{
+            "colorMode": "critical",
+            "fill": true,
+            "line": true,
+            "op": "gt",
+            "yaxis": "left"
+          }],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "$vw_staging",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [{
+              "format": "none",
+              "label": null,
+              "logBase": 1,
+              "max": "1",
+              "min": "0",
+              "show": false
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": false
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        }
+      ],
+      "repeat": null,
+      "title": "VW Staging",
+      "type": "row"
+    }
+  ],
+  "refresh": "1m",
+  "schemaVersion": 18,
+  "style": "dark",
+  "tags": [
+    "prometheus",
+    "elasticsearch"
+  ],
+  "templating": {
+    "list": [{
+        "allValue": null,
+        "current": {
+          "text": "All",
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": "Prometheus GCP Production EU",
+        "definition": "",
+        "hide": 2,
+        "includeAll": true,
+        "label": null,
+        "multi": true,
+        "name": "production_eu_cluster",
+        "options": [],
+        "query": "label_values(elasticsearch_cluster_health_status,cluster)",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "tagValuesQuery": "label_values(elasticsearch_cluster_health_status{kubernetes_cluster=\"$tag\"},cluster)",
+        "tags": [
+          "ctp-production-eu"
+        ],
+        "tagsQuery": "label_values(kubernetes_cluster)",
+        "type": "query",
+        "useTags": true
+      },
+      {
+        "allValue": null,
+        "current": {
+          "text": "All",
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": "Prometheus GCP Production US",
+        "definition": "",
+        "hide": 2,
+        "includeAll": true,
+        "label": null,
+        "multi": true,
+        "name": "production_us_cluster",
+        "options": [],
+        "query": "label_values(elasticsearch_cluster_health_status,cluster)",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "tagValuesQuery": "label_values(elasticsearch_cluster_health_status{kubernetes_cluster=\"$tag\"},cluster)",
+        "tags": [
+          "ctp-production-us"
+        ],
+        "tagsQuery": "label_values(kubernetes_cluster)",
+        "type": "query",
+        "useTags": true
+      },
+      {
+        "allValue": null,
+        "current": {
+          "text": "All",
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": "Prometheus GCP Staging EU",
+        "definition": "",
+        "hide": 2,
+        "includeAll": true,
+        "label": null,
+        "multi": true,
+        "name": "staging_cluster",
+        "options": [],
+        "query": "label_values(elasticsearch_cluster_health_status, cluster)",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "tagValuesQuery": "label_values(elasticsearch_cluster_health_status{kubernetes_cluster=\"$tag\"},cluster)",
+        "tags": [
+          "ctp-staging"
+        ],
+        "tagsQuery": "label_values(kubernetes_cluster)",
+        "type": "query",
+        "useTags": true
+      },
+      {
+        "allValue": null,
+        "current": {
+          "text": "All",
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": "Prometheus AWS Staging VW",
+        "definition": "",
+        "hide": 2,
+        "includeAll": true,
+        "label": null,
+        "multi": true,
+        "name": "vw_staging",
+        "options": [],
+        "query": "label_values(elasticsearch_cluster_health_status,cluster)",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "label_values(elasticsearch_cluster_health_status{kubernetes_cluster=\"$tag\"},cluster)",
+        "tags": [
+          "ctp-vw-staging-eu"
+        ],
+        "tagsQuery": "label_values(kubernetes_cluster)",
+        "type": "query",
+        "useTags": true
+      },
+      {
+        "allValue": null,
+        "current": {
+          "text": "All",
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": "Prometheus AWS Production VW",
+        "definition": "",
+        "hide": 2,
+        "includeAll": true,
+        "label": null,
+        "multi": true,
+        "name": "vw_production",
+        "options": [],
+        "query": "label_values(elasticsearch_cluster_health_status,cluster)",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "label_values(elasticsearch_cluster_health_status{kubernetes_cluster=\"$tag\"},cluster)",
+        "tags": [
+          "ctp-vw-production-eu"
+        ],
+        "tagsQuery": "label_values(kubernetes_cluster)",
+        "type": "query",
+        "useTags": true
+      },
+      {
+        "allValue": null,
+        "current": {
+          "text": "All",
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": "Prometheus AWS Production ATT",
+        "definition": "label_values(elasticsearch_cluster_health_status,cluster)",
+        "hide": 2,
+        "includeAll": true,
+        "label": null,
+        "multi": true,
+        "name": "att_production_va",
+        "options": [],
+        "query": "label_values(elasticsearch_cluster_health_status,cluster)",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "label_values(elasticsearch_cluster_health_status{kubernetes_cluster=\"$tag\"},cluster)",
+        "tags": [
+          "ctp-att-production-va"
+        ],
+        "tagsQuery": "label_values(kubernetes_cluster)",
+        "type": "query",
+        "useTags": true
+      },
+      {
+        "allValue": null,
+        "current": {
+          "text": "All",
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": "Prometheus AWS Production EU",
+        "definition": "label_values(elasticsearch_cluster_health_status,cluster)",
+        "hide": 2,
+        "includeAll": true,
+        "label": null,
+        "multi": true,
+        "name": "ctp_aws_production_fra",
+        "options": [],
+        "query": "label_values(elasticsearch_cluster_health_status,cluster)",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "label_values(elasticsearch_cluster_health_status{kubernetes_cluster=\"$tag\"},cluster)",
+        "tags": [
+          "ctp-aws-production-fra"
+        ],
+        "tagsQuery": "label_values(kubernetes_cluster)",
+        "type": "query",
+        "useTags": true
+      }
+    ]
+  },
+  "time": {
+    "from": "now-12h",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ],
+    "time_options": [
+      "5m",
+      "15m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
+    ]
+  },
+  "timezone": "",
+  "title": "ElasticSearch Cluster Health Status Overview",
+  "uid": "IMNvELvik",
+  "version": 100
+}

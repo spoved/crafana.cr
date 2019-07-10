@@ -1,0 +1,11 @@
+HTTP/1.1 200 OK
+Cache-Control: no-cache
+Content-Type: application/json
+Expires: -1
+Pragma: no-cache
+X-Frame-Options: deny
+Date: Tue, 18 Jun 2019 18:19:50 GMT
+Content-Length: 193
+Connection: close
+
+[{"orgId":1,"userId":1,"email":"admin@localhost","avatarUrl":"/avatar/46d229b033af06a191ff2267bca9ae56","login":"admin","role":"Admin","lastSeenAt":"2019-06-18T18:16:26Z","lastSeenAtAge":"3m"}]
