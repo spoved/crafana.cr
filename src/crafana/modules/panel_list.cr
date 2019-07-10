@@ -2,7 +2,7 @@ module PanelList
   property panels : Array(Crafana::Panel) = Array(Crafana::Panel).new
 
   def add_single_stat(**args, &block : Crafana::SingleStat ->)
-    panel = Crafana::SingleStat.new(*args)
+    panel = Crafana::SingleStat.new(**args)
     self.panels << panel
     yield panel
     self.panels

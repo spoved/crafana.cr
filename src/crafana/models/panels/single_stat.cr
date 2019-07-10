@@ -1,8 +1,9 @@
 require "json"
-require "../vars"
-require "./percent"
-require "./range_map"
-require "./sparkline"
+require "../../vars"
+require "../percent"
+require "../range_map"
+require "../sparkline"
+require "../panel"
 
 module Crafana
   # Generates Single Stat panel json structure
@@ -157,9 +158,9 @@ module Crafana
     property time_from : String?
     getter panel_type : String = Crafana::Vars::SINGLESTAT_TYPE
 
-    def initialize(@dashboard : Crafana::Dashboard, @datasource)
+    def initialize(@datasource : String, @dashboard : Crafana::Dashboard? = nil)
       @panel_type = Crafana::Vars::SINGLESTAT_TYPE
-      @id = @dashboard.next_panel_id
+      @id = @dashboard.as(Crafana::Dashboard).next_panel_id unless @dashboard.nil?
     end
   end
 end
