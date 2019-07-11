@@ -190,8 +190,8 @@ class Crafana::DataSource
 
     property interval : String?
 
-    @[JSON::Field(key: "keepCookies")]
-    property keep_cookies : Array(JSON::Any?)?
+    # @[JSON::Field(key: "keepCookies")]
+    # property keep_cookies : Array(JSON::Any?)?
 
     @[JSON::Field(key: "maxConcurrentShardRequests")]
     property max_concurrent_shard_requests : MaxConcurrentShardRequests?
