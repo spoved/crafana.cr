@@ -174,6 +174,7 @@ class Crafana::DataSource
   class JsonData
     alias MaxConcurrentShardRequests = Int32 | String
     include JSON::Serializable
+    include YAML::Serializable
 
     @[JSON::Field(key: "authType")]
     property auth_type : String?
@@ -232,6 +233,7 @@ class Crafana::DataSource
 
   class SecureJsonData
     include JSON::Serializable
+    include YAML::Serializable
 
     @[JSON::Field(key: "accessKey")]
     property access_key : String?
