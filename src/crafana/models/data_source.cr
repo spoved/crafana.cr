@@ -19,7 +19,7 @@ class Crafana::DataSource
   property is_default : Bool = false
 
   @[JSON::Field(key: "jsonData")]
-  property json_data : JsonData
+  property json_data : JsonData?
 
   @[JSON::Field(key: "withCredentials")]
   property with_credentials : Bool
