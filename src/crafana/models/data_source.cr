@@ -3,7 +3,7 @@ require "json"
 class Crafana::DataSource
   include JSON::Serializable
 
-  property id : Int32
+  property id : Int32?
 
   @[JSON::Field(key: "type")]
   property data_source_type : String
