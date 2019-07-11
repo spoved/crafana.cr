@@ -1,7 +1,25 @@
 require "json"
+require "yaml"
 
 class Crafana::DataSource
+  KEY_ALIAS = {
+    "folder_id"           => "folderId",
+    "org_id"              => "orgId",
+    "secure_json_data"    => "secureJsonData",
+    "with_credentials"    => "withCredentials",
+    "basic_auth"          => "basicAuth",
+    "is_default"          => "isDefault",
+    "json_data"           => "jsonData",
+    "basic_auth_user"     => "basicAuthUser",
+    "basic_auth_password" => "basicAuthPassword",
+    "is_folder"           => "isFolder",
+    "has_acl"             => "hasAcl",
+    "plugin_id"           => "pluginId",
+    "read_only"           => "readOnly",
+  }
+
   include JSON::Serializable
+  include YAML::Serializable
 
   property id : Int32?
 
@@ -22,7 +40,7 @@ class Crafana::DataSource
   property json_data : JsonData?
 
   @[JSON::Field(key: "withCredentials")]
-  property with_credentials : Bool
+  property with_credentials : Bool = false
 
   @[JSON::Field(key: "secureJsonData")]
   property secure_json_data : SecureJsonData?
