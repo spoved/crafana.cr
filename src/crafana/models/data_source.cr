@@ -10,13 +10,13 @@ class Crafana::DataSource
 
   property name : String
 
-  property access : String
+  property access : String = "proxy"
 
   @[JSON::Field(key: "basicAuth")]
-  property basic_auth : Bool
+  property basic_auth : Bool = false
 
   @[JSON::Field(key: "isDefault")]
-  property is_default : Bool
+  property is_default : Bool = false
 
   @[JSON::Field(key: "jsonData")]
   property json_data : JsonData
