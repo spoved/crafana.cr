@@ -24,6 +24,7 @@ class Crafana::DataSource
   property id : Int32?
 
   @[JSON::Field(key: "type")]
+  @[YAML::Field(key: "type")]
   property data_source_type : String
 
   property name : String
