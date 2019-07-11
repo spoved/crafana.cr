@@ -98,7 +98,7 @@ module Crafana
     property cache_timeout : Int32?
     property colors : Array(RGBA) = [
       Crafana::Vars::GREEN,
-      Crafana::Vars::ORANGE,
+      Crafana::Vars::YELLOW,
       Crafana::Vars::RED,
     ]
 
