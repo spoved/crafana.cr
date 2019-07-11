@@ -155,10 +155,10 @@ class Crafana::DataSource
       terr << "  access_mode = \"#{access}\"\n"
     end
 
-    if !json_data.nil? && !json_data.to_tf.empty?
+    if !json_data.nil? && !json_data.as(JsonData).to_tf.empty?
       terr << "\n"
       terr << "  json_data {\n"
-      terr << json_data.to_tf
+      terr << json_data.as(JsonData).to_tf
       terr << "  }\n"
     end
 
