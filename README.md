@@ -1,4 +1,4 @@
-# Crafana
+# Crafana [![Build Status](https://travis-ci.org/spoved/crafana.cr.svg?branch=master)](https://travis-ci.org/spoved/crafana.cr)
 
 This library is intended to help autogenerate Grafana dashboards
 
