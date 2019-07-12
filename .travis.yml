@@ -1,6 +1,10 @@
 language: crystal
+env:
+  GRAFANA_URL=http://localhost/
+  GRAFANA_USERNAME=admin
+  GRAFANA_PASSWORD=password
+  GRAFANA_TOKEN=abcd1234
 
-# Uncomment the following if you'd like Travis to run specs and check code formatting
-# script:
-#   - crystal spec
-#   - crystal tool format --check
+script:
+  - crystal spec
+  - crystal tool format --check

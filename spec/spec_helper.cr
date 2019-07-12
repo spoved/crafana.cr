@@ -2,7 +2,10 @@ require "dotenv"
 Dotenv.load
 
 ENV["CRYSTAL_ENV"] = "test"
-ENV["GRAFANA_URL"] = "" unless ENV["GRAFANA_URL"]?
+ENV["GRAFANA_URL"] ||= "http://localhost"
+ENV["GRAFANA_USERNAME"] ||= "admin"
+ENV["GRAFANA_PASSWORD"] ||= "password"
+ENV["GRAFANA_TOKEN"] ||= "abcd1234"
 
 require "vcr"
 require "http/client"
