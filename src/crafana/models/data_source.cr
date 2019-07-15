@@ -18,6 +18,9 @@ class Crafana::DataSource
     "read_only"           => "readOnly",
   }
 
+  def initialize(@name, @data_source_type)
+  end
+
   include JSON::Serializable
   include YAML::Serializable
 

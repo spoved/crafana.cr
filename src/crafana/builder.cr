@@ -89,7 +89,7 @@ class Crafana::Builder
   # end
   # ```
   def add_folder(title : String, &block : Crafana::Folder ->) : Crafana::Folder
-    folder = Crafana::DataSource.new(title)
+    folder = Crafana::Folder.new(title)
     add_folder(folder)
     yield folder
     folder
@@ -115,8 +115,8 @@ class Crafana::Builder
   # ```
   # datasource = builder.add_datasource("My Datasource")
   # ```
-  def add_datasource(title : String) : Crafana::DataSource
-    datasource = Crafana::DataSource.new(title)
+  def add_datasource(name : String, data_source_type : String) : Crafana::DataSource
+    datasource = Crafana::DataSource.new(name, data_source_type)
     add_datasource(datasource)
   end
 
@@ -127,8 +127,8 @@ class Crafana::Builder
   #   datasource.database = "my_database"
   # end
   # ```
-  def add_datasource(title : String, &block : Crafana::DataSource ->) : Crafana::DataSource
-    datasource = Crafana::DataSource.new(title)
+  def add_datasource(name : String, data_source_type : String, &block : Crafana::DataSource ->) : Crafana::DataSource
+    datasource = Crafana::DataSource.new(name, data_source_type)
     add_datasource(datasource)
     yield datasource
     datasource
