@@ -26,6 +26,7 @@ module Crafana
     property version = 0
     property links : Array(JSON::Any) = Array(JSON::Any).new
     property shared_crosshair : Bool = false
+    property folder : Crafana::Folder? = nil
 
     def initialize(
       @title : String,
