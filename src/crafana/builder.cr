@@ -60,7 +60,7 @@ class Crafana::Builder
   # folders
   ######################
 
-  # Add a folder
+  # Add a *Crafana::Folder*
   #
   # ```
   # folder = Crafana::Folder.new("My Folder")
@@ -71,7 +71,7 @@ class Crafana::Builder
     folder
   end
 
-  # Add a folder
+  # Add a *Crafana::Folder*
   #
   # ```
   # folder = builder.add_folder("My Folder")
@@ -81,7 +81,7 @@ class Crafana::Builder
     add_folder(folder)
   end
 
-  # Add a folder
+  # Add a *Crafana::Folder*
   #
   # ```
   # builder.add_folder("My Folder") do |folder|
@@ -99,7 +99,7 @@ class Crafana::Builder
   # datasources
   ######################
 
-  # Add a datasource
+  # Add a *Crafana::DataSource*
   #
   # ```
   # datasource = Crafana::DataSource.new("My Datasource")
@@ -110,7 +110,7 @@ class Crafana::Builder
     datasource
   end
 
-  # Add a datasource
+  # Add a *Crafana::DataSource*
   #
   # ```
   # datasource = builder.add_datasource("My Datasource")
@@ -120,7 +120,7 @@ class Crafana::Builder
     add_datasource(datasource)
   end
 
-  # Add a datasource
+  # Add a *Crafana::DataSource*
   #
   # ```
   # builder.add_datasource("My Datasource") do |datasource|
@@ -138,7 +138,7 @@ class Crafana::Builder
   # dashboards
   ######################
 
-  # Add a dashboard
+  # Add a *Crafana::Dashboard*
   #
   # ```
   # builder = Crafana::Builder.new do |builder|
@@ -151,7 +151,7 @@ class Crafana::Builder
     dash
   end
 
-  # Add a dashboard and yield it to the block
+  # Add a *Crafana::Dashboard* and yield it to the block
   #
   # ```
   # builder = Crafana::Builder.new
@@ -166,7 +166,7 @@ class Crafana::Builder
     dash
   end
 
-  # Add a pre-created dashboard
+  # Add a pre-created *Crafana::Dashboard*
   #
   # ```
   # builder = Crafana::Builder.new
