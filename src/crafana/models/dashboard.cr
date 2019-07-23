@@ -78,7 +78,7 @@ module Crafana
       @panels
     end
 
-    def to_json(json)
+    def to_json(json : JSON::Builder)
       update_grid_pos
 
       json.object do
