@@ -63,7 +63,7 @@ module Crafana
     def add_row(title = "", &block : Crafana::Row ->)
       row = Row.new(dashboard: self, title: title)
       # determine grid pos
-      row.grid_pos = GridPos.new((row.height.num/30), 24, 0, 0)
+      row.grid_pos = GridPos.new((row.height.num/30).to_i, 24, 0, 0)
       self.panels << row
       yield row
     end
