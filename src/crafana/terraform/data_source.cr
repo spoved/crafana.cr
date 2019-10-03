@@ -120,6 +120,18 @@ module Crafana
           terr << "    default_region = \"#{default_region}\"\n"
         end
 
+        if !http_method.nil? && !http_method.as(String).empty?
+          terr << "    http_method = \"#{http_method}\"\n"
+        end
+
+        if !query_timeout.nil? && !query_timeout.as(String).empty?
+          terr << "    query_timeout = \"#{query_timeout}\"\n"
+        end
+
+        if !time_interval.nil? && !time_interval.as(String).empty?
+          terr << "    time_interval = \"#{time_interval}\"\n"
+        end
+
         terr.to_s
       end
     end
