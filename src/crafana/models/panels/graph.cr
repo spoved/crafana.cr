@@ -22,6 +22,8 @@ module Crafana
 
     property datasource : String?
 
+    property decimals : Int32?
+
     property fill : Int32 = 1
 
     @[JSON::Field(key: "gridPos")]
