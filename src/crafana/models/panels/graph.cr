@@ -11,7 +11,7 @@ module Crafana
     include TargetList
 
     @[JSON::Field(key: "aliasColors")]
-    property alias_colors : AliasColors? = nil
+    property alias_colors : Hash(String, String)?
 
     property bars : Bool = false
 
