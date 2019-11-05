@@ -5,11 +5,11 @@ module Crafana
   # Grafana graphs have two Y axes: one on the left and one on the right.
   class YAxis
     # :nodoc:
-    class IntConverter
+    class FloatConverter
       def self.from_json(pull : JSON::PullParser)
         case pull.kind
         when :string
-          pull.read_string.to_i
+          pull.read_string.to_f32
         else
           raise "Unsupported conversion for kind: #{pull.kind}"
         end
@@ -32,11 +32,11 @@ module Crafana
     @[JSON::Field(key: "logBase")]
     property log_base : Int32 = 1
 
-    @[JSON::Field(converter: Crafana::YAxis::IntConverter)]
-    property max : Int32? = nil
+    @[JSON::Field(converter: Crafana::YAxis::FloatConverter)]
+    property max : (Int32 | Float32)? = nil
 
-    @[JSON::Field(converter: Crafana::YAxis::IntConverter)]
-    property min : Int32? = 0
+    @[JSON::Field(converter: Crafana::YAxis::FloatConverter)]
+    property min : (Int32 | Float32)? = 0
 
     property show : Bool = true
 
