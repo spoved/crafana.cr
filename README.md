@@ -50,3 +50,4 @@ builder.dashboards.first.to_json
 ## Contributors
 
 - [Holden Omans](https://github.com/kalinon) - creator and maintainer
+- [Christian Nicolai](https://github.com/cmur2) - Superuser!
