@@ -13,9 +13,9 @@ module Crafana
     property mode : String = Crafana::Vars::TEXT_MODE_MARKDOWN
     property span : String?
 
-    def initialize(@dashboard : Crafana::Dashboard, @datasource)
+    def initialize(@dashboard : Crafana::Dashboard? = nil)
       @panel_type = Crafana::Vars::TEXT_TYPE
-      @id = @dashboard.next_panel_id
+      @id = @dashboard.as(Crafana::Dashboard).next_panel_id unless @dashboard.nil?
     end
   end
 end
