@@ -8,10 +8,10 @@ module Crafana
     class FloatConverter
       def self.from_json(pull : JSON::PullParser)
         case pull.kind
-        when :string
+        when JSON::PullParser::Kind::String
           pull.read_string.to_f32
         else
-          raise "Unsupported conversion for kind: #{pull.kind}"
+          raise "Unsupported conversion for JSON::PullParser::Kind: #{pull.kind}"
         end
       end
 

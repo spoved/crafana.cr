@@ -14,7 +14,7 @@ shards:
 
   habitat:
     github: luckyframework/habitat
-    commit: 318b8386f1a1ac2b23745ffce91131348fdf97f5
+    commit: 9d77c65a2bc9db08c9ad416a002260ae11ead47a
 
   halite:
     github: icyleaf/halite
