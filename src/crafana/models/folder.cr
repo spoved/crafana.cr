@@ -57,7 +57,7 @@ module Crafana
         when "canAdmin"
           _dash.can_admin = Bool.new(pull)
         else
-          logger.debug("Unknown json key", "Crafana::Dashboard")
+          logger.debug { "Unknown json key" }
           pull.skip
         end
       end

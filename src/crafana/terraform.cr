@@ -51,7 +51,7 @@ class Crafana::Terraform::Builder < Crafana::Builder
   # Write each entry in *dashboards* to a json file
   private def write_dashboard_files
     dashboards.each do |dash|
-      logger.info("Writing dashboard: \"#{dash[:dash].title}\" to file: #{dash[:file_path]}", "CT::Metrics::Grafana")
+      logger.info { "Writing dashboard: \"#{dash[:dash].title}\" to file: #{dash[:file_path]}" }
       File.open(dash[:file_path], "w+") do |file|
         file.puts dash[:dash].to_pretty_json
       end

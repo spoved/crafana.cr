@@ -1,5 +1,5 @@
 require "dotenv"
-Dotenv.load
+Dotenv.load if File.exists?(".env")
 
 ENV["CRYSTAL_ENV"] = "test"
 ENV["GRAFANA_URL"] ||= "http://localhost"

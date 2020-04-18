@@ -2,7 +2,7 @@ version: 1.0
 shards:
   clim:
     github: at-grandpa/clim
-    version: 0.7.0
+    version: 0.10.0
 
   colors:
     github: dscottboggs/colors-and-gradients
@@ -10,7 +10,7 @@ shards:
 
   dotenv:
     github: gdotdesign/cr-dotenv
-    version: 0.2.0
+    version: 0.7.0
 
   habitat:
     github: luckyframework/habitat
@@ -18,13 +18,13 @@ shards:
 
   halite:
     github: icyleaf/halite
-    version: 0.10.2
+    version: 0.10.5
 
   spoved:
     github: spoved/spoved.cr
-    commit: 090fabf87b6ea698254be755b7bbbd0d2c7c42b0
+    commit: ba7c1d6351f599a7d48dfead8dc1a9b07210c5e2
 
   vcr:
     github: spoved/vcr.cr
-    version: 0.2.0
+    version: 0.2.3
 

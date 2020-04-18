@@ -179,7 +179,7 @@ module Crafana
         when "links"
           _dash.links = Array(JSON::Any).new(pull)
         else
-          logger.debug("Unknown json key", "Crafana::Dashboard")
+          logger.debug { "Unknown json key" }
           pull.skip
         end
       end
