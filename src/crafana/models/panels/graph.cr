@@ -29,9 +29,6 @@ module Crafana
     @[JSON::Field(key: "fillGradient")]
     property fill_gradient : Int32 = 0
 
-    @[JSON::Field(key: "gridPos")]
-    property grid_pos : GridPos
-
     @[JSON::Field(key: "isNew")]
     property is_new = true
 
