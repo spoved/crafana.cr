@@ -8,14 +8,14 @@ targets:
   crafana:
     main: src/bin/crafana.cr
 
-crystal: 0.35.0
+crystal: 0.36.0
 
 license: MIT
 
 dependencies:
   spoved:
     github: spoved/spoved.cr
-    branch: master
+    version: ~> 0.4.1
   clim:
     github: at-grandpa/clim
   colors:
