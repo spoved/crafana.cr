@@ -6,7 +6,7 @@ This library is intended to help autogenerate Grafana dashboards
 
 Add the dependency to your project's `shard.yml`:
 
-```
+```yaml
 dependencies:
   crafana:
     github: spoved/crafana.cr
@@ -18,7 +18,7 @@ dependencies:
 
 The `Crafana::Builder` can be used to generate dashboards and sub panels.
 
-```
+```crystal
 builder = Crafana::Builder.new
 builder.add_dashboard("My new dash") do |dash|
   # Add sub panels to the dashboard here
@@ -35,7 +35,7 @@ end
 
 The dashboard json can be exported via the `to_json` method.
 
-```
+```crystal
 builder.dashboards.first.to_json
 ```
 
