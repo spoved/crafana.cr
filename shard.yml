@@ -15,7 +15,7 @@ license: MIT
 dependencies:
   spoved:
     github: spoved/spoved.cr
-    version: ~> 0.4.1
+    version: ~> 0.5.0
   clim:
     github: at-grandpa/clim
   colors:
