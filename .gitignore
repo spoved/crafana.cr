@@ -4,3 +4,5 @@
 /.shards/
 *.dwarf
 .env
+
+shard.lock
