@@ -17,10 +17,8 @@ dependencies:
     github: spoved/spoved.cr
     version: ">= 0.5.1"
   clim:
-    # github: at-grandpa/clim
-    # until https://github.com/at-grandpa/clim/pull/82 is merged
-    github: kalinon/clim
-    branch: patch-1
+    github: at-grandpa/clim
+    branch: master
   colors:
     # github: dscottboggs/colors-and-gradients
     # until https://github.com/dscottboggs/colors-and-gradients/pull/1 is merged
