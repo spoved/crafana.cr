@@ -16,14 +16,14 @@ dependencies:
   spoved:
     github: spoved/spoved.cr
     version: ">= 0.5.1"
+  halite:
+    github: icyleaf/halite
   clim:
     github: at-grandpa/clim
     branch: master
   colors:
-    # github: dscottboggs/colors-and-gradients
-    # until https://github.com/dscottboggs/colors-and-gradients/pull/1 is merged
-    github: kalinon/colors-and-gradients
-    branch: patch-1
+    github: dscottboggs/colors-and-gradients
+    version: ">= 1.0.0"
 development_dependencies:
   vcr:
     github: spoved/vcr.cr
