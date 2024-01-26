@@ -2,24 +2,6 @@ require "spoved/api/client"
 require "../models/*"
 
 class Crafana::Api::Client < Spoved::Api::Client
-  def initialize(@host : String,
-                 @port : Int32? = nil,
-                 @scheme = "https",
-                 args : NamedTuple? = nil)
-    if args[:token]?
-      @default_headers = {
-        "Content-Type"  => "application/json",
-        "Accept"        => "application/json",
-        "Authorization" => "Bearer #{args[:token]?}",
-      }
-    else
-      @user = args[:user]?
-      @pass = args[:pass]?
-    end
-
-    @api_path = "api"
-  end
-
   def search(params)
     Array(Result).from_json self.get_raw("search", params).body
   end
